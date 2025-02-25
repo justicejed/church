@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word International Church (WIC)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #121212;
+            --primary-accent: #c7b299;
+            --secondary-accent: #9e1f3d;
+            --text-light: #f0f0f0;
+            --card-bg: #1e1e1e;
+            --highlight-color: #f0e6d2;
+            --footer-text: #b3b3b3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: var(--text-light);
+            background-color: var(--dark-bg);
+            font-weight: 400;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(30, 30, 30, 0.8);
+            color: var(--text-light);
+            padding: 15px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background-color 0.4s ease-in-out;
+        }
+
+        header:hover {
+            background-color: rgba(30, 30, 30, 1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            color: var(--primary-accent);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+            animation: fadeIn 1s ease-out;
+            transition: color 0.3s ease-in-out;
+        }
+
+        header h1:hover {
+            color: var(--highlight-color);
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: flex !important; /* Ensures it remains visible */
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+        }
+
+        .hamburger:focus {
+            outline: none;
+        }
+
+        .hamburger span {
+            height: 3px;
+            background: var(--text-light);
+            border-radius: 3px;
+            transition: all 0.3s linear;
+            position: relative;
+            transform-origin: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav ul li:hover {
+            transform: translateY(-4px);
+        }
+
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-accent);
+            border-bottom: 2px solid var(--secondary-accent);
+        }
+
+        /* Hero Section Styles */
+        .hero {
+            background-image: url('images/img11.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .hero:hover {
+            transform: scale(1.03);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            transition: background-color 0.4s ease-in-out;
+        }
+
+        .hero:hover::before {
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 30px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero h2 {
+            font-size: 4.5rem;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+            color: var(--primary-accent);
+            transition: color 0.3s ease-in-out;
+        }
+
+        .hero h2:hover {
+            color: var(--highlight-color);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--secondary-accent);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: var(--highlight-color);
+            color: var(--dark-bg);
+            transform: translateY(-4px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 3.3rem;
+            margin-bottom: 35px;
+            position: relative;
+            padding-bottom: 18px;
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--primary-accent);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            transition: color 0.3s ease-in-out;
+        }
+
+        section h2:hover {
+            color: var(--highlight-color);
+        }
+
+        section h2::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary-accent);
+        }
+
+        /* Values Grid Styles */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minmax width */
+            gap: 30px; /* Reduced gap */
+        }
+
+        .value-card {
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            padding: 30px; /* Reduced padding */
+            border-radius: 12px;
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 9px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .value-card i {
+            font-size: 3rem; /* Reduced font size */
+            color: var(--primary-accent);
+            margin-bottom: 20px; /* Reduced margin */
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .value-card i:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .value-card h3 {
+            font-size: 1.5rem; /* Reduced font size */
+            margin-bottom: 12px; /* Reduced margin */
+            font-weight: 600;
+            color: var(--secondary-accent);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .value-card p {
+            font-size: 0.9rem; /* Reduced font size */
+        }
+
+        /* Pastors Styles */
+        .pastors {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .pastor-card {
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.4);
+            width: 330px;
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .pastor-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 9px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .pastor-card img {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+            cursor: pointer;
+        }
+
+        .pastor-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .pastor-info {
+            padding: 28px;
+            display: none;
+        }
+
+        .pastor-info h3 {
+            font-size: 1.7rem;
+            margin-bottom: 14px;
+            color: var(--secondary-accent);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        .pastor-info p {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Live Stream Styles */
+        .live-stream-container {
+            margin-top: 60px;
+        }
+
+        .stream-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .stream-option {
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .stream-option:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 9px 16px rgba(0, 0, 0, 0.5);
+        }
+
+        .stream-option h4 {
+            margin-bottom: 12px;
+            color: var(--primary-accent);
+            font-size: 1.3rem;
+            text-align: center;
+        }
+
+        .stream-option iframe {
+            width: 100%;
+            height: 160px;
+            border-radius: 12px;
+            border: none;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .stream-option:hover iframe {
+            transform: scale(1.03);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-bg);
+            color: var(--footer-text);
+            text-align: center;
+            padding: 30px 0;
+            animation: fadeIn 1s ease-out;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Contact & Donate Styles */
+        .contact-donate-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch; /* Make items the same height */
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .contact-donate-container section {
+            width: 48%; /* Adjusted width for spacing */
+            box-sizing: border-box;
+            margin-bottom: 25px;
+            padding: 35px;
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease-in-out;
+            display: flex; /* Use flexbox for equal height */
+            flex-direction: column; /* Stack content vertically */
+            justify-content: center; /* Center content vertically */
+        }
+
+        .contact-donate-container section:hover {
+            transform: translateY(-6px);
+        }
+
+        /* Ensuring content stays within the container */
+        .contact-donate-container section > * {
+            margin-bottom: 15px; /* Add spacing between elements */
+        }
+
+        .contact-donate-container section > *:last-child {
+            margin-bottom: 0; /* Remove margin from last element */
+        }
+
+        /* Donation Section Styles */
+        .donation-section {
+            text-align: center;
+        }
+
+        .donation-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--primary-accent);
+        }
+
+        .donation-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: var(--secondary-accent);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 9px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .donation-button:hover {
+            background-color: var(--highlight-color);
+            color: var(--dark-bg);
+            transform: translateY(-4px);
+        }
+
+        /* Follow Us Section */
+        .follow-us {
+            text-align: center;
+            margin-top: 50px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .follow-us h2 {
+            color: var(--primary-accent);
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--text-light);
+            font-size: 2.5rem;
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary-accent);
+            transform: translateY(-5px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            color: black;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Gallery Styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Worship Times Styles */
+        #worship-times .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted minmax width */
+            gap: 30px; /* Reduced gap */
+        }
+
+        #worship-times {
+            padding: 60px 0;
+        }
+
+        /* Marquee styles */
+        .marquee-container {
+            overflow: hidden;
+            padding: 5px 10px;
+            background-color: var(--card-bg);
+            color: var(--text-light);
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Style for Donation Appreciation */
+        #donationForm {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #donationForm label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #donationForm input[type="text"] {
+            width: 250px;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #donationForm button {
+            padding: 10px 20px;
+            background-color: var(--secondary-accent);
+            color: var(--text-light);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #donationForm button:hover {
+            background-color: var(--highlight-color);
+            color: var(--dark-bg);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            header h1 {
+                font-size: 1.7rem;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(30, 30, 30, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+            }
+
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+
+            nav ul li:last-child {
+                margin-bottom: 0;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero h2 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pastors {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pastor-card {
+                width: 90%;
+            }
+
+            .stream-options {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-donate-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-donate-container section {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Marquee Section - Moved to be directly inside the body -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span>Announcements: Join us for our upcoming events! | Bible study every Wednesday | New members
+                welcome!</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>Word International Church</h1>
+            <nav>
+                <ul id="nav-list">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#values">Our Values</a></li>
+                    <li><a href="#pastors">Pastors</a></li>
+                    <li><a href="#livestream">Live Stream</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Welcome to WIC</h2>
+                <p>A place to connect with God and community. Join us in faith, love, and service.</p>
+                <a href="#contact" class="btn">Get Involved</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Word International Church (WIC) is a vibrant community dedicated to spreading the love and teachings of
+                Christ. We strive to create a welcoming environment where individuals and families can grow spiritually,
+                connect with others, and serve the wider community. Our mission is to empower believers to live out
+                their faith in practical ways, making a positive impact in the world.</p>
+            <p>We offer a range of programs and activities, including weekly worship services, bible studies, youth
+                groups, and outreach initiatives. Whether you're new to faith or a long-time follower of Christ, we
+                invite you to join us on this journey of spiritual discovery and transformation.</p>
+        </div>
+    </section>
+
+    <section id="values">
+        <div class="container">
+            <h2>Our Core Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-bible"></i>
+                    <h3>Biblical Truth</h3>
+                    <p>We believe in the authority and infallibility of the Bible as the inspired Word of God.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Love & Compassion</h3>
+                    <p>We are committed to showing God's love through acts of kindness and compassion.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community</h3>
+                    <p>We foster a supportive and inclusive community where everyone is welcome.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pastors">
+        <div class="container">
+            <h2>Our Pastors</h2>
+            <div class="pastors">
+                <div class="pastor-card">
+                    <img src="images/img7.jpeg" alt="Pastor">
+                    <div class="pastor-info">
+                        <h3>Tony Andrews</h3>
+                        <p>Senior Pastor with a passion for teaching and spiritual growth.</p>
+                    </div>
+                </div>
+                <div class="pastor-card">
+                    <img src="images/img9.jpeg" alt="Pastor">
+                    <div class="pastor-info">
+                        <h3>Akua Andrews</h3>
+                        <p>Associate Pastor focusing on youth ministry and community outreach.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="livestream">
+        <div class="container">
+            <h2>Live Stream</h2>
+            <div class="live-stream-container">
+                <p style="text-align: center;">Join us for our live services every Sunday at 10:30 AM.</p>
+                <div class="stream-options">
+                    <div class="stream-option">
+                        <h4>Watch us live</h4>
+                        <iframe src="https://youtube.com/@wordinternationalchurch8235?si=i0Z7Pe3enZYXck1-" title="YouTube video player"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </div>
+                    <div class="stream-option">
+                        <h4>Watch on Youtube</h4>
+                        <iframe
+                            src="https://youtube.com/@wordinternationalchurch8235?si=i0Z7Pe3enZYXck1-"
+                            style="border:none;overflow:hidden" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+                            allowfullscreen="true"
+                            allowtransparency="true" allow="encrypted-media"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery">
+                <img src="images/img1.jpg" alt="Church Image 1">
+                <img src="images/img2.jpg" alt="Church Image 2">
+                <img src="images/img3.jpg" alt="Church Image 3">
+                <img src="images/img4.jpg" alt="Church Image 4">
+                <img src="images/img5.jpg" alt="Church Image 5">
+                <img src="images/img6.jpg" alt="Church Image 6">
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Worship Times Section -->
+    <section id="worship-times">
+        <div class="container">
+            <h2>Worship Times</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Sunday Service</h3>
+                    <p>10:30 AM - 1:00 PM</p>
+                </div>
+
+                <div class="value-card">
+                    <i class="fas fa-praying-hands"></i>
+                    <h3>Weekly Prayer Meeting</h3>
+                    <p>5:30 AM - 7:00 AM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Donate Section -->
+    <section id="contact">
+        <div class="container">
+            <h2>Inquiries and Support</h2>
+            <div class="contact-donate-container">
+                <section class="contact-section">
+                    <h2 style="font-size: 36px;">Contact Information</h2>
+                    <p><i>Have questions or need prayer? Reach out to us!</i></p>
+                    <p>Email: Wordinternational@icloud.com</p>
+                    <p>Address: 2505 12th Ave s, Moorhead, MN, United States</p>
+                    <p>Phone: (701) 353-2168</p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                    <p></p>
+                </section>
+                <section class="donation-section">
+                    <h2>Support Our Mission</h2>
+                    <p>Your generous donations help us spread the word of God and serve our community.</p>
+                    <a href="#" class="donation-button">Donate Now</a>
+        <div class="donation-handles" id="donationHandles">
+            <a href="cashapp://transfer?d=$YourCashAppHandle">Cash App: $wordint</a>
+            <a href="https://paypal.me/YourPayPalHandle">PayPal: Word International Church</a>
+            <p>Zelle: your.email@example.com</p>
+        </div>
+    </section>
+</div>
+
+<!-- Follow Us Section -->
+<section class="follow-us">
+    <h2>Follow Us</h2>
+    <!-- Social Links -->
+    <div class="social-links">
+        <a href="https://www.facebook.com/share/1W9JHJmnsC/?mibextid=wwXIfr" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://youtube.com/@wordinternationalchurch8235?si=i0Z7Pe3enZYXck1-" aria-label="Subscribe to our YouTube channel"><i
+                class="fab fa-youtube"></i></a>
+        <a href="https://www.tiktok.com/@pastortonykweku?_t=ZT-8uCFmFkt39e&_r=1" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.instagram.com/wordinternational2018?igsh=Z2pwY2l0Z21yd2g2" aria-label="Follow us on Instagram"><i
+                class="fab fa-instagram"></i></a>
+    </div>
+</section>
+
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2025 Word International Church. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        //Basic JS for making pastor info visible
+        document.addEventListener('DOMContentLoaded', function () {
+            const pastorCards = document.querySelectorAll('.pastor-card');
+
+            pastorCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const info = this.querySelector('.pastor-info');
+                    info.style.display = info.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+
+            //Hamburger menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const navList = document.getElementById('nav-list');
+
+            hamburger.addEventListener('click', () => {
+                navList.classList.toggle('open');
+            });
+        });
+    </script>
+
+</body>
+
+</html>
