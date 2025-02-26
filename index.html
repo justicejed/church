@@ -4,21 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Word International Church (WIC)</title>
+    <title>Live Stream - Word International Church (WIC)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
     <style>
+        /* Include the same styles from the original page */
         :root {
-            --dark-bg: #1a1a1a;
-            --primary-accent: #9e1f3d; /* Color from the logo */
-            --secondary-accent: #c7b299; /* Color from the logo */
-            --text-light: #ffffff;
-            --card-bg: #2a2a2a;
-            --highlight-color: #f0e6d2;
-            --footer-text: #b3b3b3;
+            --light-bg: #ffffff; /* White background color */
+            --dark-bg: #ffffff; /* White background color */
+            --primary-text: #333333; /* Dark text color */
+            --secondary-text: #555555; /* Secondary text color */
+            --card-bg: #ffffff; /* White card background */
+            --highlight-color: #ffcc00; /* Highlight color */
+            --footer-text: #333333; /* Dark footer text color */
+            --marquee-bg: #ffffff; /* White background color for marquee */
+            --marquee-text: #333333; /* Dark text color for marquee */
         }
 
         * {
@@ -31,9 +34,10 @@
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.8;
-            color: var(--text-light);
-            background-color: var(--dark-bg);
+            color: var(--primary-text);
+            background-color: var(--light-bg); /* White background color */
             font-weight: 400;
+            background-image: none; /* Remove background image */
         }
 
         .container {
@@ -44,8 +48,8 @@
 
         /* Header Styles */
         header {
-            background-color: #ffffff; /* Made bar of the logo white background */
-            color: var(--text-light);
+            background-color: var(--light-bg); /* White background */
+            color: var(--primary-text);
             padding: 10px 0;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
             position: sticky;
@@ -62,17 +66,30 @@
         }
 
         header h1 {
-            font-size: 2rem;
+            font-size: 1.6rem; /* Unified font size for headers */
             font-weight: 700;
             letter-spacing: 0.8px;
-            color: var(--primary-accent); /* Changed text color to blend with logo */
+            color: var(--primary-text); /* Dark text color */
             text-shadow: none;
             animation: fadeIn 1s ease-out;
             transition: color 0.3s ease-in-out;
         }
 
         header h1:hover {
-            color: var(--secondary-accent); /* Changed hover color to blend with logo */
+            color: var(--secondary-text); /* Secondary text color */
+        }
+
+        .highlight {
+            display: inline-block;
+            border: 2px solid var(--primary-text);
+            padding: 2px 8px;
+            border-radius: 4px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .highlight:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
         }
 
         /* Hamburger Menu Styles */
@@ -95,7 +112,7 @@
 
         .hamburger span {
             height: 3px;
-            background: var(--text-light);
+            background: var(--primary-text);
             border-radius: 3px;
             transition: all 0.3s linear;
             position: relative;
@@ -118,97 +135,16 @@
         }
 
         nav ul li a {
-            color: var(--primary-accent); /* Changed text color to blend with logo */
+            color: var(--primary-text); /* Dark text color */
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
             border-bottom: 2px solid transparent;
+            font-family: 'Georgia', serif;
         }
 
         nav ul li a:hover {
-            color: var(--secondary-accent); /* Changed hover color to blend with logo */
-            border-bottom: 2px solid var(--secondary-accent); /* Changed border color to blend with logo */
-        }
-
-        /* Hero Section Styles */
-        .hero {
-            background-image: url('images/img11.jpeg');
-            background-size: cover;
-            background-position: center;
-            height: 75vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--text-light);
-            position: relative;
-            overflow: hidden;
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .hero:hover {
-            transform: scale(1.03);
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.6);
-            transition: background-color 0.4s ease-in-out;
-        }
-
-        .hero:hover::before {
-            background-color: rgba(0, 0, 0, 0.75);
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            padding: 0 30px;
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        .hero h2 {
-            font-size: 4.5rem;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-            color: var(--primary-accent);
-            transition: color 0.3s ease-in-out;
-        }
-
-        .hero h2:hover {
-            color: var(--highlight-color);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            font-weight: 500;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            color: var(--text-light);
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: var(--primary-accent);
-            color: var(--text-light);
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            letter-spacing: 0.6px;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
-            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
-        }
-
-        .btn:hover {
-            background-color: var(--secondary-accent);
-            color: var(--dark-bg);
-            transform: translateY(-4px);
+            color: var(--secondary-text); /* Secondary text color */
         }
 
         /* Section Styles */
@@ -217,33 +153,60 @@
             transition: all 0.3s ease-in-out;
         }
 
+        section.text-section {
+            background-color: var(--light-bg); /* Light background for text sections */
+            color: var(--primary-text);
+        }
+
+        section.picture-section {
+            background-color: var(--dark-bg); /* Dark background for picture sections */
+            color: var(--light-bg);
+        }
+
         section h2 {
-            text-align: center;
-            font-size: 3.3rem;
-            margin-bottom: 35px;
             position: relative;
-            padding-bottom: 18px;
             display: inline-block;
-            margin-left: auto;
-            margin-right: auto;
-            color: var(--primary-accent);
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-            transition: color 0.3s ease-in-out;
+            padding: 10px 20px;
+            background-color: var(--highlight-color);
+            color: var(--light-bg);
+            border-radius: 50px; /* Oval shape */
+            animation: ovalAnimation 2s infinite;
         }
 
-        section h2:hover {
-            color: var(--highlight-color);
+        @keyframes ovalAnimation {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
         }
 
-        section h2::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 70px;
-            height: 4px;
-            background-color: var(--secondary-accent);
+        @keyframes boxAnimation {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes borderAnimation {
+            0% {
+                border-color: #ffcc00; /* Changed to match logo color */
+            }
+            25% {
+                border-color: var(--highlight-color);
+            }
+            50% {
+                border-color: var(--secondary-text);
+            }
+            75% {
+                border-color: var(--highlight-color);
+            }
+            100% {
+                border-color: #a70c1c; /* Changed to match logo color */
+            }
         }
 
         /* Values Grid Styles */
@@ -255,22 +218,22 @@
 
         .value-card {
             background-color: var(--card-bg);
-            color: var(--text-light);
+            color: var(--primary-text);
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
             transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
             animation: fadeIn 1s ease-out;
         }
 
         .value-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 9px 16px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 9px 16px rgba(0, 0, 0, 0.2);
         }
 
         .value-card i {
-            font-size: 3rem;
-            color: var(--primary-accent);
+            font-size: 2rem; /* Reduced font size */
+            color: var(--highlight-color);
             margin-bottom: 20px;
             transition: transform 0.6s ease-in-out;
         }
@@ -279,107 +242,50 @@
             transform: rotate(360deg) scale(1.1);
         }
 
-        .value-card h3 {
-            font-size: 1.5rem;
+        .value-card h3, .pastor-info h3 {
+            font-size: 1.2rem; /* Unified font size for sub-headers */
             margin-bottom: 12px;
             font-weight: 600;
-            color: var(--primary-accent);
+            color: var(--primary-text);
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-        }
-
-        .value-card p {
-            font-size: 0.9rem;
-            color: var(--text-light);
-        }
-
-        /* Pastors Styles */
-        .pastors {
-            display: flex;
-            justify-content: center;
-            gap: 60px;
-            flex-wrap: wrap;
-        }
-
-        .pastor-card {
-            background-color: var(--card-bg);
-            color: var (--text-light);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.4);
-            width: 330px;
-            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .pastor-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 9px 16px rgba(0, 0, 0, 0.5);
-        }
-
-        .pastor-card img {
-            width: 100%;
-            height: 330px;
-            object-fit: cover;
-            transition: transform 0.4s ease-in-out;
-            cursor: pointer;
-        }
-
-        .pastor-card:hover img {
-            transform: scale(1.04);
-        }
-
-        .pastor-info {
-            padding: 28px;
-            display: none;
-        }
-
-        .pastor-info h3 {
-            font-size: 1.7rem;
-            margin-bottom: 14px;
-            color: var(--primary-accent);
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
-        }
-
-        .pastor-info p {
-            animation: fadeIn 0.6s ease-out;
-            color: var(--text-light);
         }
 
         /* Live Stream Styles */
         .live-stream-container {
             margin-top: 60px;
+            animation: slideDown 0.5s ease-in-out;
+            background-color: var(--card-bg); /* White background */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .stream-options {
+        .previous-streams-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(4, 1fr); /* 4-column grid */
+            gap: 30px;
             margin-top: 35px;
         }
 
-        .stream-option {
+        .stream-card {
             background-color: var(--card-bg);
-            color: var (--text-light);
+            color: var(--primary-text);
             padding: 25px;
             border-radius: 12px;
-            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
             transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
             animation: fadeIn 1s ease-out;
+            border: 2px solid var(--highlight-color); /* Added border */
+            cursor: pointer; /* Make the stream option clickable */
+            position: relative;
         }
 
-        .stream-option:hover {
+        .stream-card:hover {
             transform: translateY(-6px);
-            box-shadow: 0 9px 16px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 9px 16px rgba(239, 237, 237, 0.2);
         }
 
-        .stream-option h4 {
-            margin-bottom: 12px;
-            color: var(--primary-accent);
-            font-size: 1.3rem;
-            text-align: center;
-        }
-
-        .stream-option iframe {
+        .stream-card video {
             width: 100%;
             height: 160px;
             border-radius: 12px;
@@ -387,239 +293,63 @@
             transition: transform 0.4s ease-in-out;
         }
 
-        .stream-option:hover iframe {
+        .stream-card:hover video {
             transform: scale(1.03);
+        }
+
+        /* Fullscreen button styles */
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--highlight-color);
+            color: var(--primary-text);
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .fullscreen-btn:hover {
+            background-color: var(--secondary-text);
+            color: var(--light-bg);
+        }
+
+        /* Live session indicator */
+        .live-indicator {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            z-index: 10;
+            display: none; /* Initially hidden */
+        }
+
+        /* Animation for live stream container */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Footer Styles */
         footer {
-            background-color: var(--card-bg);
+            background-color: var(--dark-bg); /* White background */
             color: var(--footer-text);
             text-align: center;
             padding: 30px 0;
             animation: fadeIn 1s ease-out;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        /* Contact & Donate Styles */
-        .contact-donate-container {
-            display: flex;
-            justify-content: space-around;
-            align-items: stretch;
-            flex-wrap: wrap;
-            margin-top: 50px;
-        }
-
-        .contact-donate-container section {
-            width: 48%;
-            box-sizing: border-box;
-            margin-bottom: 25px;
-            padding: 35px;
-            background-color: var(--card-bg);
-            color: var(--text-light);
-            border-radius: 12px;
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.4);
-            transition: transform 0.4s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .contact-donate-container section:hover {
-            transform: translateY(-6px);
-        }
-
-        .contact-donate-container section > * {
-            margin-bottom: 15px;
-        }
-
-        .contact-donate-container section > *:last-child {
-            margin-bottom: 0;
-        }
-
-        .donation-section {
-            text-align: center;
-        }
-
-        .donation-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            color: var(--primary-accent);
-        }
-
-        .donation-button {
-            display: inline-block;
-            padding: 16px 32px;
-            background-color: var(--primary-accent);
-            color: var(--text-light);
-            text-decoration: none;
-            border-radius: 9px;
-            font-size: 1.3rem;
-            font-weight: 600;
-            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
-        }
-
-        .donation-button:hover {
-            background-color: var(--secondary-accent);
-            color: var(--dark-bg);
-            transform: translateY(-4px);
-        }
-
-        .follow-us {
-            text-align: center;
-            margin-top: 50px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .follow-us h2 {
-            color: var(--primary-accent);
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 20px;
-        }
-
-        .social-links a {
-            color: var(--text-light);
-            font-size: 2.5rem;
-            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
-        }
-
-        .social-links a:hover {
-            color: var(--secondary-accent);
-            transform: translateY(-5px);
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.4);
-        }
-
-        .modal-content {
-            background-color: #fefefe;
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
-            color: black;
-        }
-
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        /* Gallery Styles */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s ease-in-out;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05);
-        }
-
-        /* Worship Times Styles */
-        #worship-times .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
-
-        #worship-times {
-            padding: 60px 0;
-        }
-
-        /* Marquee styles */
-        .marquee-container {
-            overflow: hidden;
-            padding: 5px 10px;
-            background-color: var(--card-bg);
-            color: var(--text-light);
-            height: 30px;
-            line-height: 30px;
-        }
-
-        .marquee-content {
-            display: inline-block;
-            padding-left: 100%;
-            animation: marquee 20s linear infinite;
-            white-space: nowrap;
-        }
-
-        @keyframes marquee {
-            0% {
-                transform: translateX(0%);
-            }
-
-            100% {
-                transform: translateX(-100%);
-            }
-        }
-
-        /* Style for Donation Appreciation */
-        #donationForm {
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        #donationForm label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        #donationForm input[type="text"] {
-            width: 250px;
-            padding: 8px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        #donationForm button {
-            padding: 10px 20px;
-            background-color: var(--secondary-accent);
-            color: var(--text-light);
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        #donationForm button:hover {
-            background-color: var(--highlight-color);
-            color: var(--dark-bg);
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         /* Animations */
@@ -642,6 +372,27 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomInOut {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
             }
         }
 
@@ -684,251 +435,68 @@
                 display: flex;
             }
 
-            .hero h2 {
-                font-size: 3rem;
-            }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
-            .values-grid {
+            .previous-streams-grid {
                 grid-template-columns: 1fr;
-            }
-
-            .pastors {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .pastor-card {
-                width: 90%;
-            }
-
-            .stream-options {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-donate-container {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .contact-donate-container section {
-                width: 90%;
             }
         }
 
         .logo {
-            max-height: 60px;
+            max-height: 40px; /* Decreased logo size */
             margin-left: 0;
+        }
+
+        .live-stream-container video {
+            width: 100%; /* Make the live stream video bigger */
+            height: 500px; /* Adjust height as needed */
+            border-radius: 12px;
+            border: 2px solid var(--highlight-color); /* Added border */
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .live-stream-container video:hover {
+            transform: scale(1.03);
         }
     </style>
 </head>
 
 <body>
-
-    <!-- Marquee Section - Moved to be directly inside the body -->
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span>Announcements: Join us for our upcoming events! | Bible study every Wednesday | New members
-                welcome!</span>
-        </div>
-    </div>
-
     <header>
         <div class="container">
-            <a href="#home"><img src="images/logo.jpeg" alt="Church Logo" class="logo"></a> <!-- Made logo clickable and adjusted position -->
-            <h1>Word International Church</h1>
+            <a href="index.html"><img src="images/logo.jpeg" alt="Church Logo" class="logo"></a>
+            <h1><span class="highlight">Word International Church</span></h1>
             <nav>
                 <ul id="nav-list">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#values">Our Values</a></li>
-                    <li><a href="#pastors">Pastors</a></li>
-                    <li><a href="#livestream">Live Stream</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#values">Our Values</a></li>
+                    <li><a href="index.html#pastors">Pastors</a></li>
+                    <li><a href="livestream.html">Live Stream</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
             </nav>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
         </div>
     </header>
 
-    <section class="hero" id="home">
+    <section id="livestream" class="picture-section">
         <div class="container">
-            <div class="hero-content">
-                <h2>Welcome to WIC</h2>
-                <p>A place to connect with God and community. Join us in faith, love, and service.</p>
-                <a href="#contact" class="btn">Get Involved</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="container">
-            <h2>About Us</h2>
-            <p>Word International Church (WIC) is a vibrant community dedicated to spreading the love and teachings of
-                Christ. We strive to create a welcoming environment where individuals and families can grow spiritually,
-                connect with others, and serve the wider community. Our mission is to empower believers to live out
-                their faith in practical ways, making a positive impact in the world.</p>
-            <p>We offer a range of programs and activities, including weekly worship services, bible studies, youth
-                groups, and outreach initiatives. Whether you're new to faith or a long-time follower of Christ, we
-                invite you to join us on this journey of spiritual discovery and transformation.</p>
-        </div>
-    </section>
-
-    <section id="values">
-        <div class="container">
-            <h2>Our Values</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <i class="fas fa-bible"></i>
-                    <h3>Biblical Truth</h3>
-                    <p>We believe in the authority and infallibility of the Bible as the inspired Word of God.</p>
-                </div>
-                <div class="value-card">
-                    <i class="fas fa-heart"></i>
-                    <h3>Love & Compassion</h3>
-                    <p>We are committed to showing God's love through acts of kindness and compassion.</p>
-                </div>
-                <div class="value-card">
-                    <i class="fas fa-users"></i>
-                    <h3>Community</h3>
-                    <p>We foster a supportive and inclusive community where everyone is welcome.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="pastors">
-        <div class="container">
-            <h2>Our Pastors</h2>
-            <div class="pastors">
-                <div class="pastor-card">
-                    <img src="images/img7.jpeg" alt="Pastor">
-                    <div class="pastor-info">
-                        <h3>Tony Andrews</h3>
-                        <p>Senior Pastor with a passion for teaching and spiritual growth.</p>
-                    </div>
-                </div>
-                <div class="pastor-card">
-                    <img src="images/img9.jpeg" alt="Pastor">
-                    <div class="pastor-info">
-                        <h3>Akua Andrews</h3>
-                        <p>Associate Pastor focusing on youth ministry and community outreach.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="livestream">
-        <div class="container">
-            <h2>Live Stream</h2>
+            <h2>Watch Live Now</h2>
             <div class="live-stream-container">
                 <p style="text-align: center;">Join us for our live services every Sunday at 10:30 AM.</p>
-                <div class="stream-options">
-                    <div class="stream-option">
-                        <h4>Watch us live</h4>
-                        <iframe src="https://youtube.com/@wordinternationalchurch8235?si=i0Z7Pe3enZYXck1-" title="YouTube video player"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowfullscreen></iframe>
-                    </div>
-                    <div class="stream-option">
-                        <h4>Watch on Youtube</h4>
-                        <iframe
-                            src="https://youtube.com/@wordinternationalchurch8235?si=i0Z7Pe3enZYXck1-"
-                            style="border:none;overflow:hidden" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-                            allowfullscreen="true"
-                            allowtransparency="true" allow="encrypted-media"></iframe>
-                    </div>
+                <div class="stream-option">
+                    <div class="live-indicator" id="website-live-indicator">LIVE</div>
+                    <video id="live-stream" controls autoplay>
+                        <source src="path/to/live/stream" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button class="fullscreen-btn" onclick="toggleFullscreen()">Fullscreen</button>
                 </div>
+            </div>
+            <h2>Previous Streams</h2>
+            <div class="previous-streams-grid" id="previous-streams-grid">
+                <!-- Previous streams will be dynamically added here -->
             </div>
         </div>
     </section>
-
-    <section id="gallery">
-        <div class="container">
-            <h2>Gallery</h2>
-            <div class="gallery">
-                <img src="images/img1.jpg" alt="Church Image 1">
-                <img src="images/img2.jpg" alt="Church Image 2">
-                <img src="images/img3.jpg" alt="Church Image 3">
-                <img src="images/img4.jpg" alt="Church Image 4">
-                <img src="images/img5.jpg" alt="Church Image 5">
-                <img src="images/img6.jpg" alt="Church Image 6">
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Worship Times Section -->
-    <section id="worship-times">
-        <div class="container">
-            <h2>Service Hours</h2>
-            <div class="values-grid">
-                <div class="value-card">
-                    <i class="fas fa-sun"></i>
-                    <h3>Sunday Service</h3>
-                    <p>10:30 AM - 1:00 PM</p>
-                </div>
-
-                <div class="value-card">
-                    <i class="fas fa-praying-hands"></i>
-                    <h3>Weekly Prayer Meeting</h3>
-                    <p>5:30 AM - 7:00 AM</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact & Donate Section -->
-    <section id="contact">
-        <div class="container">
-            <h2>Inquires and more</h2>
-            <div class="contact-donate-container">
-                <section class="contact-section">
-                    <h2 style="font-size: 36px;">Contact Information</h2>
-                    <p><i>Have questions or need prayer? Reach out to us!</i></p>
-                    <p>Email: Wordinternational@icloud.com</p>
-                    <p>Address: 2505 12th Ave s, Moorhead, MN, United States</p>
-                    <p>Phone: (701) 353-2168</p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                    <p></p>
-                </section>
-                <section class="donation-section">
-                    <h2>Support Our Mission</h2>
-                    <p>Your generous donations help us spread the word of God and serve our community.</p>
-                    <a href="#" class="donation-button">Donate Now</a>
-        <div class="donation-handles" id="donationHandles">
-            <a href="cashapp://transfer?d=$YourCashAppHandle">Cash App: $wordint</a>
-            <a href="https://paypal.me/YourPayPalHandle">PayPal: Word International Church</a>
-            <p>Zelle: your.email@example.com</p>
-        </div>
-    </section>
-</div>
-
-<!-- Follow Us Section -->
-<section class="follow-us">
-    <h2>Follow Us</h2>
-    <!-- Social Links -->
-    <div class="social-links">
-        <a href="https://www.facebook.com/share/1W9JHJmnsC/?mibextid=wwXIfr" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
-        <a href="https://youtube.com/@wordinternationalchurch8235?si=i0Z7Pe3enZYXck1-" aria-label="Subscribe to our YouTube channel"><i
-                class="fab fa-youtube"></i></a>
-        <a href="https://www.tiktok.com/@pastortonykweku?_t=ZT-8uCFmFkt39e&_r=1" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
-        <a href="https://www.instagram.com/wordinternational2018?igsh=Z2pwY2l0Z21yd2g2" aria-label="Follow us on Instagram"><i
-                class="fab fa-instagram"></i></a>
-    </div>
-</section>
-
 
     <footer id="footer">
         <div class="container">
@@ -937,27 +505,73 @@
     </footer>
 
     <script>
-        //Basic JS for making pastor info visible
-        document.addEventListener('DOMContentLoaded', function () {
-            const pastorCards = document.querySelectorAll('.pastor-card');
+        // Function to toggle fullscreen for the live stream
+        function toggleFullscreen() {
+            const video = document.getElementById('live-stream');
+            if (!document.fullscreenElement) {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.mozRequestFullScreen) { // Firefox
+                    video.mozRequestFullScreen();
+                } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) { // IE/Edge
+                    video.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { // Firefox
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE/Edge
+                    document.msExitFullscreen();
+                }
+            }
+        }
 
-            pastorCards.forEach(card => {
-                card.addEventListener('click', function () {
-                    const info = this.querySelector('.pastor-info');
-                    info.style.display = info.style.display === 'block' ? 'none' : 'block';
-                });
-            });
+        // Function to check if live indicators should be displayed
+        function checkLiveIndicators() {
+            const websiteLiveIndicator = document.getElementById('website-live-indicator');
 
-            //Hamburger menu functionality
-            const hamburger = document.getElementById('hamburger');
-            const navList = document.getElementById('nav-list');
+            // Example logic to check if streams are live (replace with actual logic)
+            const isWebsiteLive = true; // Replace with actual check
 
-            hamburger.addEventListener('click', () => {
-                navList.classList.toggle('open');
-            });
-        });
+            websiteLiveIndicator.style.display = isWebsiteLive ? 'block' : 'none';
+        }
+
+        // Function to save the current stream to the previous streams list
+        function saveCurrentStream() {
+            const previousStreamsGrid = document.getElementById('previous-streams-grid');
+            const currentStreamSrc = document.getElementById('live-stream').querySelector('source').src;
+            const currentDate = new Date().toISOString().split('T')[0];
+
+            const streamCard = document.createElement('div');
+            streamCard.classList.add('stream-card');
+            streamCard.innerHTML = `
+                <h4>Service on ${currentDate}</h4>
+                <video controls>
+                    <source src="${currentStreamSrc}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+
+            // Add the new stream card to the beginning of the grid
+            previousStreamsGrid.insertBefore(streamCard, previousStreamsGrid.firstChild);
+
+            // Keep only the last 4 streams
+            while (previousStreamsGrid.children.length > 4) {
+                previousStreamsGrid.removeChild(previousStreamsGrid.lastChild);
+            }
+        }
+
+        // Check if live indicators should be displayed on page load
+        document.addEventListener('DOMContentLoaded', checkLiveIndicators);
+
+        // Save the current stream when it ends
+        document.getElementById('live-stream').addEventListener('ended', saveCurrentStream);
     </script>
-
 </body>
 
 </html>
