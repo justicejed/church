@@ -4,24 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Live Stream - Word International Church (WIC)</title>
+    <title>Word International Church (WIC)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
     <style>
-        /* Include the same styles from the original page */
         :root {
-            --light-bg: #ffffff; /* White background color */
-            --dark-bg: #ffffff; /* White background color */
+            --light-bg: #f0f0f0; /* Light background color */
+            --dark-bg: #333333; /* Dark background color */
             --primary-text: #333333; /* Dark text color */
             --secondary-text: #555555; /* Secondary text color */
-            --card-bg: #ffffff; /* White card background */
+            --card-bg: #ffffff; /* Light card background */
             --highlight-color: #ffcc00; /* Highlight color */
-            --footer-text: #333333; /* Dark footer text color */
-            --marquee-bg: #ffffff; /* White background color for marquee */
-            --marquee-text: #333333; /* Dark text color for marquee */
+            --footer-text: #777777; /* Footer text color */
+            --marquee-bg: #000000; /* Black background color for marquee */
+            --marquee-text: #ffffff; /* White text color for marquee */
         }
 
         * {
@@ -35,9 +34,8 @@
             font-family: 'Poppins', sans-serif;
             line-height: 1.8;
             color: var(--primary-text);
-            background-color: var(--light-bg); /* White background color */
+            background-color: var(--light-bg);
             font-weight: 400;
-            background-image: none; /* Remove background image */
         }
 
         .container {
@@ -147,6 +145,95 @@
             color: var(--secondary-text); /* Secondary text color */
         }
 
+        /* Hero Section Styles */
+        .hero {
+            background-image: url('images/img11.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 75vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--light-bg);
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .hero:hover {
+            transform: scale(1.03);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.6);
+            transition: background-color 0.4s ease-in-out;
+        }
+
+        .hero:hover::before {
+            background-color: rgba(0, 0, 0, 0.75);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 30px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        .hero h2, section h2, .donation-section h2, .follow-us h2, #newsletter h2 {
+            font-size: 2.5rem; /* Unified font size for sectional headers */
+            margin-bottom: 25px;
+            padding: 2px 15px; /* Reduced padding for a smaller polygon */
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--primary-text);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            transition: color 0.3s ease-in-out;
+            border: 2px solid #930c27; /* Changed to match logo color */
+            border-radius: 50px; /* Changed to make the shape oval */
+            animation: boxAnimation 2s infinite, borderAnimation 4s linear infinite; /* Added border animation */
+            text-align: center;
+        }
+
+        .hero h2:hover, section h2:hover, .donation-section h2:hover, .follow-us h2:hover, #newsletter h2:hover {
+            color: var(--highlight-color);
+        }
+
+        .hero p, .value-card p, .pastor-info p, .donation-section p, .contact-section p, #newsletter p {
+            font-size: 1.1rem; /* Unified font size for main bodies */
+            margin-bottom: 40px;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+            color: var(--primary-text);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: var(--primary-text);
+            color: var(--light-bg);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            letter-spacing: 0.6px;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary-text);
+            color: var (--light-bg);
+            transform: translateY(-4px);
+        }
+
         /* Section Styles */
         section {
             padding: 60px 0;
@@ -163,23 +250,15 @@
             color: var(--light-bg);
         }
 
-        section h2 {
-            position: relative;
-            display: inline-block;
-            padding: 10px 20px;
-            background-color: var(--highlight-color);
-            color: var(--light-bg);
-            border-radius: 50px; /* Oval shape */
-            animation: ovalAnimation 2s infinite;
-        }
-
-        @keyframes ovalAnimation {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
+        section h2::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary-text);
         }
 
         @keyframes boxAnimation {
@@ -250,24 +329,66 @@
             text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
         }
 
+        /* Pastors Styles */
+        .pastors {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+        }
+
+        .pastor-card {
+            background-color: var(--card-bg);
+            color: var(--primary-text);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
+            width: 330px;
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .pastor-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 9px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .pastor-card img {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            transition: transform 0.4s ease-in-out;
+            cursor: pointer;
+        }
+
+        .pastor-card:hover img {
+            transform: scale(1.04);
+        }
+
+        .pastor-info {
+            padding: 28px;
+            display: none;
+        }
+
+        .pastor-info p {
+            animation: fadeIn 0.6s ease-out;
+            color: var(--primary-text);
+        }
+
         /* Live Stream Styles */
         .live-stream-container {
             margin-top: 60px;
             animation: slideDown 0.5s ease-in-out;
-            background-color: var(--card-bg); /* White background */
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .previous-streams-grid {
+        .stream-options {
             display: grid;
-            grid-template-columns: repeat(4, 1fr); /* 4-column grid */
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
             margin-top: 35px;
         }
 
-        .stream-card {
+        .stream-option {
             background-color: var(--card-bg);
             color: var(--primary-text);
             padding: 25px;
@@ -280,12 +401,12 @@
             position: relative;
         }
 
-        .stream-card:hover {
+        .stream-option:hover {
             transform: translateY(-6px);
-            box-shadow: 0 9px 16px rgba(239, 237, 237, 0.2);
+            box-shadow: 0 9px 16px rgba(0, 0, 0, 0.2);
         }
 
-        .stream-card video {
+        .stream-option iframe {
             width: 100%;
             height: 160px;
             border-radius: 12px;
@@ -293,7 +414,7 @@
             transition: transform 0.4s ease-in-out;
         }
 
-        .stream-card:hover video {
+        .stream-option:hover iframe {
             transform: scale(1.03);
         }
 
@@ -344,12 +465,339 @@
 
         /* Footer Styles */
         footer {
-            background-color: var(--dark-bg); /* White background */
+            background-color: var(--dark-bg);
             color: var(--footer-text);
             text-align: center;
             padding: 30px 0;
             animation: fadeIn 1s ease-out;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Contact & Donate Styles */
+        .contact-donate-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: stretch;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .contact-donate-container section {
+            width: 48%;
+            box-sizing: border-box;
+            margin-bottom: 25px;
+            padding: 35px;
+            background-color: var(--card-bg);
+            color: var(--primary-text);
+            border-radius: 12px;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .contact-donate-container section:hover {
+            transform: translateY(-6px);
+        }
+
+        .contact-donate-container section > * {
+            margin-bottom: 15px;
+        }
+
+        .contact-donate-container section > *:last-child {
+            margin-bottom: 0;
+        }
+
+        .donation-section {
+            text-align: center;
+        }
+
+        .donation-button {
+            display: inline-block;
+            padding: 16px 32px;
+            background-color: var(--highlight-color);
+            color: var(--primary-text);
+            text-decoration: none;
+            border-radius: 9px;
+            font-size: 1.1rem; /* Reduced font size */
+            font-weight: 600;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        .donation-button:hover {
+            background-color: var(--secondary-text);
+            color: var(--light-bg);
+            transform: translateY(-4px);
+        }
+
+        .donation-handles a {
+            display: block;
+            margin-top: 10px;
+            color: var(--primary-text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .donation-handles a:hover {
+            color: var(--secondary-text);
+        }
+
+        .follow-us, #newsletter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: var(--primary-text);
+            font-size: 2rem; /* Reduced font size */
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .social-links a:hover {
+            color: var(--highlight-color);
+            transform: translateY(-5px);
+        }
+
+        #newsletter-form {
+            display: flex;
+            flex-direction: row; /* Changed to row for horizontal alignment */
+            align-items: center;
+            gap: 10px; /* Added gap between elements */
+        }
+
+        #newsletter-form label {
+            font-size: 0.9rem; /* Reduced font size */
+            margin-bottom: 10px;
+        }
+
+        #newsletter-form input[type="text"],
+        #newsletter-form input[type="email"] {
+            width: 100%;
+            max-width: 200px; /* Adjusted max-width for inline layout */
+            padding: 10px;
+            margin-bottom: 0; /* Removed margin-bottom */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #newsletter-form button {
+            padding: 10px 20px;
+            background-color: var(--highlight-color);
+            color: var(--primary-text);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        #newsletter-form button:hover {
+            background-color: var(--secondary-text);
+            color: var(--light-bg);
+            transform: translateY(-4px);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            color: black;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Gallery Styles */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Worship Times Styles */
+        #worship-times .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        #worship-times {
+            padding: 60px 0;
+        }
+
+        #worship-times h2 {
+            font-size: 2.5rem; /* Unified font size for sectional headers */
+            margin-bottom: 25px;
+            padding: 2px 15px; /* Reduced padding for a smaller polygon */
+            display: inline-block;
+            margin-left: auto;
+            margin-right: auto;
+            color: var(--primary-text);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            transition: color 0.3s ease-in-out;
+            /* Removed border and border-radius */
+            text-align: center;
+        }
+
+        /* Marquee styles */
+        .marquee-container {
+            overflow: hidden;
+            padding: 5px 10px;
+            background-color: var(--marquee-bg); /* Black background color */
+            color: var(--marquee-text); /* White text color */
+            height: 30px;
+            line-height: 30px;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        /* Style for Donation Appreciation */
+        #donationForm {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #donationForm label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #donationForm input[type="text"] {
+            width: 250px;
+            padding: 8px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #donationForm button {
+            padding: 10px 20px;
+            background-color: var(--secondary-text);
+            color: var (--primary-text);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #donationForm button:hover {
+            background-color: var(--highlight-color);
+            color: var(--light-bg);
+        }
+
+        /* Newsletter Styles */
+        #newsletter {
+            padding: 60px 0;
+            background-color: var(--light-bg); /* Light background for newsletter section */
+            color: var(--primary-text);
+        }
+
+        #newsletter .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        #newsletter-form {
+            display: flex;
+            flex-direction: row; /* Changed to row for horizontal alignment */
+            align-items: center;
+            gap: 10px; /* Added gap between elements */
+        }
+
+        #newsletter-form label {
+            font-size: 0.9rem; /* Further reduced font size */
+            margin-bottom: 10px;
+        }
+
+        #newsletter-form input[type="text"],
+        #newsletter-form input[type="email"] {
+            width: 100%;
+            max-width: 200px; /* Adjusted max-width for inline layout */
+            padding: 10px;
+            margin-bottom: 0; /* Removed margin-bottom */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #newsletter-form button {
+            padding: 10px 20px;
+            background-color: var(--highlight-color);
+            color: var(--primary-text);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        #newsletter-form button:hover {
+            background-color: var(--secondary-text);
+            color: var(--light-bg);
+            transform: translateY(-4px);
         }
 
         /* Animations */
@@ -435,68 +883,332 @@
                 display: flex;
             }
 
-            .previous-streams-grid {
+            .hero h2 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .values-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .pastors {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .pastor-card {
+                width: 90%;
+            }
+
+            .stream-options {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-donate-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-donate-container section {
+                width: 90%;
             }
         }
 
         .logo {
-            max-height: 40px; /* Decreased logo size */
+            max-height: 60px;
             margin-left: 0;
         }
 
-        .live-stream-container video {
-            width: 100%; /* Make the live stream video bigger */
-            height: 500px; /* Adjust height as needed */
-            border-radius: 12px;
-            border: 2px solid var(--highlight-color); /* Added border */
-            transition: transform 0.4s ease-in-out;
+        .welcome-heading {
+            text-align: center;
+            font-size: 3rem;
+            color: var(--primary-text);
+            border: 2px solid var(--primary-text);
+            padding: 20px;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out, zoomIn 1.5s ease-in-out, zoomInOut 2s infinite;
         }
 
-        .live-stream-container video:hover {
-            transform: scale(1.03);
+        .footer-sections {
+            display: flex;
+            justify-content: space-between; /* Changed to space-between */
+            align-items: flex-start; /* Align items to the start */
+            flex-wrap: wrap;
+            margin-top: 30px; /* Reduced margin-top */
+        }
+
+        .footer-section {
+            flex: 1;
+            margin: 10px; /* Reduced margin */
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the start */
+        }
+
+        .footer-section h2 {
+            color: var(--primary-text);
+            font-size: 2.2rem; /* Reduced text size for the header */
+            margin-bottom: 15px; /* Reduced margin-bottom */
+            padding: 2px 10px; /* Reduced padding */
+            border: none; /* Removed border */
+            border-radius: 0; /* Removed border-radius */
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Reduced gap */
+            margin-top: 20px; /* Increased margin-top to push down */
+        }
+
+        .social-links a {
+            color: var(--primary-text);
+            font-size: 2rem; /* Further reduced font size */
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        .social-links a:hover {
+            color: var(--highlight-color);
+            transform: translateY(-5px);
+        }
+
+        #newsletter-form {
+            display: flex;
+            flex-direction: row; /* Changed to row for horizontal alignment */
+            align-items: center;
+            gap: 20px; /* Added gap between elements */
+        }
+
+        #newsletter-form label {
+            font-size: 0.9rem; /* Further reduced font size */
+            margin-bottom: 10px;
+        }
+
+        #newsletter-form input[type="text"],
+        #newsletter-form input[type="email"] {
+            width: 100%;
+            max-width: 200px; /* Adjusted max-width for inline layout */
+            padding: 10px;
+            margin-bottom: 0; /* Removed margin-bottom */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        #newsletter-form button {
+            padding: 10px 20px;
+            background-color: var(--highlight-color);
+            color: var(--primary-text);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+        }
+
+        #newsletter-form button:hover {
+            background-color: var(--secondary-text);
+            color: var(--light-bg);
+            transform: translateY(-4px);
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Marquee Section - Moved to be directly inside the body -->
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span>Announcements: Join us for our upcoming events! | Bible study every Wednesday | New members
+                welcome!</span>
+        </div>
+    </div>
+
     <header>
         <div class="container">
-            <a href="index.html"><img src="images/logo.jpeg" alt="Church Logo" class="logo"></a>
-            <h1><span class="highlight">Word International Church</span></h1>
+            <a href="#home" onclick="resetPage()"><img src="images/logo.jpeg" alt="Church Logo" class="logo"></a> <!-- Made logo clickable and adjusted position -->
+            <h1> <span class="highlight">Word International Church</span></h1>
             <nav>
                 <ul id="nav-list">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#values">Our Values</a></li>
-                    <li><a href="index.html#pastors">Pastors</a></li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#values">Our Values</a></li>
+                    <li><a href="#pastors">Pastors</a></li>
                     <li><a href="livestream.html">Live Stream</a></li>
-                    <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
-    <section id="livestream" class="picture-section">
+    <section class="hero" id="home">
         <div class="container">
-            <h2>Watch Live Now</h2>
-            <div class="live-stream-container">
-                <p style="text-align: center;">Join us for our live services every Sunday at 10:30 AM.</p>
-                <div class="stream-option">
-                    <div class="live-indicator" id="website-live-indicator">LIVE</div>
-                    <video id="live-stream" controls autoplay>
-                        <source src="path/to/live/stream" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <button class="fullscreen-btn" onclick="toggleFullscreen()">Fullscreen</button>
-                </div>
-            </div>
-            <h2>Previous Streams</h2>
-            <div class="previous-streams-grid" id="previous-streams-grid">
-                <!-- Previous streams will be dynamically added here -->
+            <div class="welcome-heading">Welcome to WIC</div>
+            <div class="hero-content">
             </div>
         </div>
     </section>
+
+    <!-- About Section -->
+    <section id="about" class="text-section" style="display: none;">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Word International Church (WIC) is a vibrant community dedicated to spreading the love and teachings of
+                Christ. We strive to create a welcoming environment where individuals and families can grow spiritually,
+                connect with others, and serve the wider community. Our mission is to empower believers to live out
+                their faith in practical ways, making a positive impact in the world.</p>
+            <p>We offer a range of programs and activities, including weekly worship services, bible studies, youth
+                groups, and outreach initiatives. Whether you're new to faith or a long-time follower of Christ, we
+                invite you to join us on this journey of spiritual discovery and transformation.</p>
+        </div>
+    </section>
+
+    <section id="values" class="text-section">
+        <div class="container">
+            <h2>Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-bible"></i>
+                    <h3>Biblical Truth</h3>
+                    <p>We believe in the authority and infallibility of the Bible as the inspired Word of God.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-heart"></i>
+                    <h3>Love & Compassion</h3>
+                    <p>We are committed to showing God's love through acts of kindness and compassion.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community</h3>
+                    <p>We foster a supportive and inclusive community where everyone is welcome.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pastors" class="picture-section">
+        <div class="container">
+            <h2>Our Pastors</h2>
+            <div class="pastors">
+                <div class="pastor-card">
+                    <img src="images/img7.jpeg" alt="Pastor">
+                    <div class="pastor-info">
+                        <h3>Tony Andrews</h3>
+                        <p>Senior Pastor with a passion for teaching and spiritual growth.</p>
+                    </div>
+                </div>
+                <div class="pastor-card">
+                    <img src="images/img9.jpeg" alt="Pastor">
+                    <div class="pastor-info">
+                        <h3>Akua Andrews</h3>
+                        <p>Associate Pastor focusing on youth ministry and community outreach.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="picture-section">
+    <div class="container">
+        <h2 onclick="toggleGallery()">Gallery</h2>
+        <div class="gallery" id="gallery-container">
+            <img src="images/img1.jpg" alt="Church Image 1">
+            <img src="images/img2.jpg" alt="Church Image 2">
+            <img src="images/img3.jpg" alt="Church Image 3">
+            <img src="images/img4.jpg" alt="Church Image 4">
+            <img src="images/img5.jpg" alt="Church Image 5">
+            <img src="images/img6.jpg" alt="Church Image 6">
+            <!-- Additional images -->
+            <img src="images/img7.jpg" alt="Church Image 7" class="extra-image" style="display: none;">
+            <img src="images/img8.jpg" alt="Church Image 8" class="extra-image" style="display: none;">
+            <img src="images/img9.jpg" alt="Church Image 9" class="extra-image" style="display: none;">
+            <img src="images/img10.jpg" alt="Church Image 10" class="extra-image" style="display: none;">
+        </div>
+        <button id="toggle-more-btn" onclick="toggleMoreImages()" style="display: block; margin: 20px auto;">Show More</button>
+    </div>
+</section>
+
+    <!-- Worship Times Section -->
+    <section id="worship-times" class="text-section">
+        <div class="container">
+            <h2>Service Hours</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-sun"></i>
+                    <h3>Sunday Service</h3>
+                    <p>10:30 AM - 1:00 PM</p>
+                </div>
+
+                <div class="value-card">
+                    <i class="fas fa-praying-hands"></i>
+                    <h3>Weekly Prayer Meeting</h3>
+                    <p>5:30 AM - 7:00 AM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Donate Section -->
+    <section id="contact" class="text-section">
+        <div class="container">
+            <h2>Inquires and more</h2>
+            <div class="contact-donate-container">
+                <section class="contact-section">
+                    <h2 style="font-size: 36px;">Contact Information</h2>
+                    <p><i>Have questions or need prayer? Reach out to us!</i></p>
+                    <p>Email: Wordinternational@icloud.com</p>
+                    <p>Address: 2505 12th Ave s, Moorhead, MN, United States</p>
+                    <p>Phone: (701) 353-2168</p>
+                    
+                </section>
+                <section class="donation-section">
+                    <h2 style="font-size: 36px;">Support Our Mission</h2>
+                    <p>Your generous donations help us spread the word of God and serve our community.</p>
+                    <a href="donate.html" class="donation-button">Donate Now</a>
+                    <p></p>
+                    <p></p>
+                </section>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Sections -->
+    <div class="footer-sections">
+        <!-- Subscribe to Newsletter Section -->
+        <section class="footer-section text-section" id="newsletter">
+            <h2>Our Newsletter</h2>
+            <p>Stay updated with our latest news, events, and special messages. Subscribe to our newsletter!</p>
+            <form id="newsletter-form">
+                <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+                <input type="text" id="last-name" name="last-name" placeholder="Last Name" required>
+                <input type="email" id="email" name="email" placeholder="Email Address" required>
+                <button type="submit" class="btn">Subscribe</button>
+            </form>
+        </section>
+
+        <!-- Follow Us Section -->
+        <section class="footer-section follow-us text-section">
+            <h2>Follow Us</h2>
+            <!-- Social Links -->
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1W9JHJmnsC/?mibextid=wwXIfr" aria-label="Follow us on Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@wordinternationalchurch8235/streams" aria-label="Subscribe to our YouTube channel"><i
+                        class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@pastortonykweku?_t=ZT-8uCFmFkt39e&_r=1" aria-label="Follow us on TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.instagram.com/wordinternational2018?igsh=Z2pwY2l0Z21yd2g2" aria-label="Follow us on Instagram"><i
+                        class="fab fa-instagram"></i></a>
+            </div>
+        </section>
+    </div>
 
     <footer id="footer">
         <div class="container">
@@ -505,73 +1217,143 @@
     </footer>
 
     <script>
+        //Basic JS for making pastor info visible
+        document.addEventListener('DOMContentLoaded', function () {
+            const pastorCards = document.querySelectorAll('.pastor-card');
+
+            pastorCards.forEach(card => {
+                card.addEventListener('click', function () {
+                    const info = this.querySelector('.pastor-info');
+                    info.style.display = info.style.display === 'block' ? 'none' : 'block';
+                });
+            });
+
+            //Hamburger menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const navList = document.getElementById('nav-list');
+
+            hamburger.addEventListener('click', () => {
+                navList.classList.toggle('open');
+            });
+
+            // Check if live indicators should be displayed
+            checkLiveIndicators();
+
+            // Gallery image toggle functionality
+            const galleryImages = document.querySelectorAll('.gallery img');
+            galleryImages.forEach(image => {
+                image.addEventListener('click', function () {
+                    this.style.display = this.style.display === 'none' ? 'block' : 'none';
+                });
+            });
+
+            // Show About Us section when menu item is clicked
+            const aboutMenuItem = document.querySelector('nav ul li a[href="#about"]');
+            const aboutSection = document.getElementById('about');
+
+            aboutMenuItem.addEventListener('click', function (event) {
+                event.preventDefault();
+                aboutSection.style.display = aboutSection.style.display === 'none' ? 'block' : 'block';
+                window.scrollTo({
+                    top: aboutSection.offsetTop,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Newsletter form submission
+            const newsletterForm = document.getElementById('newsletter-form');
+            newsletterForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+                alert('Thank you for subscribing to our newsletter!');
+                newsletterForm.reset();
+            });
+        });
+
+        // Function to show logo animation
+        function showLogoAnimation() {
+            const logoAnimation = document.getElementById('logo-animation');
+            logoAnimation.style.display = 'block';
+            setTimeout(() => {
+                logoAnimation.style.display = 'none';
+            }, 2000); // Duration of the animation
+        }
+
+        // Event listeners for home link and logo click
+        document.querySelector('a[href="#home"]').addEventListener('click', showLogoAnimation);
+        document.querySelector('.logo').addEventListener('click', showLogoAnimation);
+
+        // Function to toggle live stream section visibility
+        function toggleLiveStream() {
+            const liveStreamContainer = document.getElementById('live-stream-container');
+            liveStreamContainer.style.display = liveStreamContainer.style.display === 'none' ? 'block' : 'none';
+        }
+
         // Function to toggle fullscreen for the live stream
         function toggleFullscreen() {
-            const video = document.getElementById('live-stream');
+            const iframe = document.querySelector('.stream-option iframe');
             if (!document.fullscreenElement) {
-                if (video.requestFullscreen) {
-                    video.requestFullscreen();
-                } else if (video.mozRequestFullScreen) { // Firefox
-                    video.mozRequestFullScreen();
-                } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                    video.webkitRequestFullscreen();
-                } else if (video.msRequestFullscreen) { // IE/Edge
-                    video.msRequestFullscreen();
-                }
+                iframe.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+                });
             } else {
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.mozCancelFullScreen) { // Firefox
-                    document.mozCancelFullScreen();
-                } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) { // IE/Edge
-                    document.msExitFullscreen();
-                }
+                document.exitFullscreen();
             }
         }
 
         // Function to check if live indicators should be displayed
         function checkLiveIndicators() {
             const websiteLiveIndicator = document.getElementById('website-live-indicator');
+            const youtubeLiveIndicator = document.getElementById('youtube-live-indicator');
+            const facebookLiveIndicator = document.getElementById('facebook-live-indicator');
 
             // Example logic to check if streams are live (replace with actual logic)
-            const isWebsiteLive = true; // Replace with actual check
+            const isWebsiteLive = false; // Replace with actual check
+            const isYoutubeLive = false; // Replace with actual check
+            const isFacebookLive = false; // Replace with actual check
 
             websiteLiveIndicator.style.display = isWebsiteLive ? 'block' : 'none';
+            youtubeLiveIndicator.style.display = isYoutubeLive ? 'block' : 'none';
+            facebookLiveIndicator.style.display = isFacebookLive ? 'block' : 'none';
         }
 
-        // Function to save the current stream to the previous streams list
-        function saveCurrentStream() {
-            const previousStreamsGrid = document.getElementById('previous-streams-grid');
-            const currentStreamSrc = document.getElementById('live-stream').querySelector('source').src;
-            const currentDate = new Date().toISOString().split('T')[0];
-
-            const streamCard = document.createElement('div');
-            streamCard.classList.add('stream-card');
-            streamCard.innerHTML = `
-                <h4>Service on ${currentDate}</h4>
-                <video controls>
-                    <source src="${currentStreamSrc}" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            `;
-
-            // Add the new stream card to the beginning of the grid
-            previousStreamsGrid.insertBefore(streamCard, previousStreamsGrid.firstChild);
-
-            // Keep only the last 4 streams
-            while (previousStreamsGrid.children.length > 4) {
-                previousStreamsGrid.removeChild(previousStreamsGrid.lastChild);
-            }
+        // Function to toggle gallery section visibility
+        function toggleGallery() {
+            const galleryContainer = document.getElementById('gallery-container');
+            galleryContainer.style.display = galleryContainer.style.display === 'none' ? 'grid' : 'none';
         }
 
-        // Check if live indicators should be displayed on page load
-        document.addEventListener('DOMContentLoaded', checkLiveIndicators);
+        // Function to toggle more images in the gallery
+        function toggleMoreImages() {
+            const extraImages = document.querySelectorAll('.extra-image');
+            const toggleButton = document.getElementById('toggle-more-btn');
+            const isShowingMore = extraImages[0].style.display === 'block';
 
-        // Save the current stream when it ends
-        document.getElementById('live-stream').addEventListener('ended', saveCurrentStream);
+            extraImages.forEach(image => {
+                image.style.display = isShowingMore ? 'none' : 'block';
+            });
+
+            toggleButton.textContent = isShowingMore ? 'Show More' : 'Show Less';
+        }
+
+        // Function to reset the page to default state
+        function resetPage() {
+            // Hide About Us section
+            document.getElementById('about').style.display = 'none';
+
+            // Hide live stream section
+            document.getElementById('live-stream-container').style.display = 'none';
+
+            // Hide extra gallery images
+            const extraImages = document.querySelectorAll('.extra-image');
+            extraImages.forEach(image => {
+                image.style.display = 'none';
+            });
+
+            // Reset gallery button text
+            document.getElementById('toggle-more-btn').textContent = 'Show More';
+        }
     </script>
+
 </body>
 
 </html>
