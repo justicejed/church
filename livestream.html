@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Stream - Word International Church (WIC)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Include the same styles from the original page */
+        :root {
+            --light-bg: #ffffff; /* White background color */
+            --dark-bg: #ffffff; /* White background color */
+            --primary-text: #333333; /* Dark text color */
+            --secondary-text: #555555; /* Secondary text color */
+            --card-bg: #ffffff; /* White card background */
+            --highlight-color: #ffcc00; /* Highlight color */
+            --footer-text: #333333; /* Dark footer text color */
+            --marquee-bg: #ffffff; /* White background color for marquee */
+            --marquee-text: #333333; /* Dark text color for marquee */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: var(--primary-text);
+            background-color: var(--light-bg); /* White background color */
+            font-weight: 400;
+            background-image: none; /* Remove background image */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--light-bg); /* White background */
+            color: var(--primary-text);
+            padding: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background-color 0.4s ease-in-out;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+
+        header h1 {
+            font-size: 1.6rem; /* Unified font size for headers */
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            color: var(--primary-text); /* Dark text color */
+            text-shadow: none;
+            animation: fadeIn 1s ease-out;
+            transition: color 0.3s ease-in-out;
+        }
+
+        header h1:hover {
+            color: var(--secondary-text); /* Secondary text color */
+        }
+
+        .highlight {
+            display: inline-block;
+            border: 2px solid var(--primary-text);
+            padding: 2px 8px;
+            border-radius: 4px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .highlight:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Hamburger Menu Styles */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 101;
+        }
+
+        .hamburger:focus {
+            outline: none;
+        }
+
+        .hamburger span {
+            height: 3px;
+            background: var(--primary-text);
+            border-radius: 3px;
+            transition: all 0.3s linear;
+            position: relative;
+            transform-origin: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        nav ul li:hover {
+            transform: translateY(-4px);
+        }
+
+        nav ul li a {
+            color: var(--primary-text); /* Dark text color */
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease-in-out, border-bottom 0.3s ease-in-out;
+            border-bottom: 2px solid transparent;
+            font-family: 'Georgia', serif;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-text); /* Secondary text color */
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        section.text-section {
+            background-color: var(--light-bg); /* Light background for text sections */
+            color: var(--primary-text);
+        }
+
+        section.picture-section {
+            background-color: var(--dark-bg); /* Dark background for picture sections */
+            color: var(--light-bg);
+        }
+
+        section h2 {
+            position: relative;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--highlight-color);
+            color: var(--light-bg);
+            border-radius: 50px; /* Oval shape */
+            animation: ovalAnimation 2s infinite;
+        }
+
+        @keyframes ovalAnimation {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes boxAnimation {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes borderAnimation {
+            0% {
+                border-color: #ffcc00; /* Changed to match logo color */
+            }
+            25% {
+                border-color: var(--highlight-color);
+            }
+            50% {
+                border-color: var(--secondary-text);
+            }
+            75% {
+                border-color: var(--highlight-color);
+            }
+            100% {
+                border-color: #a70c1c; /* Changed to match logo color */
+            }
+        }
+
+        /* Values Grid Styles */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .value-card {
+            background-color: var(--card-bg);
+            color: var(--primary-text);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 9px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .value-card i {
+            font-size: 2rem; /* Reduced font size */
+            color: var(--highlight-color);
+            margin-bottom: 20px;
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .value-card i:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        .value-card h3, .pastor-info h3 {
+            font-size: 1.2rem; /* Unified font size for sub-headers */
+            margin-bottom: 12px;
+            font-weight: 600;
+            color: var(--primary-text);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Live Stream Styles */
+        .live-stream-container {
+            margin-top: 60px;
+            animation: slideDown 0.5s ease-in-out;
+            background-color: var(--card-bg); /* White background */
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .previous-streams-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); /* 4-column grid */
+            gap: 30px;
+            margin-top: 35px;
+        }
+
+        .stream-card {
+            background-color: var(--card-bg);
+            color: var(--primary-text);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 7px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s ease-in-out, box-shadow 0.4s ease-in-out;
+            animation: fadeIn 1s ease-out;
+            border: 2px solid var(--highlight-color); /* Added border */
+            cursor: pointer; /* Make the stream option clickable */
+            position: relative;
+        }
+
+        .stream-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 9px 16px rgba(239, 237, 237, 0.2);
+        }
+
+        .stream-card video {
+            width: 100%;
+            height: 160px;
+            border-radius: 12px;
+            border: none;
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .stream-card:hover video {
+            transform: scale(1.03);
+        }
+
+        /* Fullscreen button styles */
+        .fullscreen-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: var(--highlight-color);
+            color: var(--primary-text);
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .fullscreen-btn:hover {
+            background-color: var(--secondary-text);
+            color: var(--light-bg);
+        }
+
+        /* Live session indicator */
+        .live-indicator {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            z-index: 10;
+            display: none; /* Initially hidden */
+        }
+
+        /* Animation for live stream container */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-bg); /* White background */
+            color: var(--footer-text);
+            text-align: center;
+            padding: 30px 0;
+            animation: fadeIn 1s ease-out;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes zoomInOut {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            header h1 {
+                font-size: 1.7rem;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background-color: rgba(30, 30, 30, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+            }
+
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 15px;
+            }
+
+            nav ul li:last-child {
+                margin-bottom: 0;
+            }
+
+            nav ul.open {
+                display: flex;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .previous-streams-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .logo {
+            max-height: 40px; /* Decreased logo size */
+            margin-left: 0;
+        }
+
+        .live-stream-container video {
+            width: 100%; /* Make the live stream video bigger */
+            height: 500px; /* Adjust height as needed */
+            border-radius: 12px;
+            border: 2px solid var(--highlight-color); /* Added border */
+            transition: transform 0.4s ease-in-out;
+        }
+
+        .live-stream-container video:hover {
+            transform: scale(1.03);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html"><img src="images/logo.jpeg" alt="Church Logo" class="logo"></a>
+            <h1><span class="highlight">Word International Church</span></h1>
+            <nav>
+                <ul id="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#values">Our Values</a></li>
+                    <li><a href="index.html#pastors">Pastors</a></li>
+                    <li><a href="livestream.html">Live Stream</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="livestream" class="picture-section">
+        <div class="container">
+            <h2>Watch Live Now</h2>
+            <div class="live-stream-container">
+                <p style="text-align: center;">Join us for our live services every Sunday at 10:30 AM.</p>
+                <div class="stream-option">
+                    <div class="live-indicator" id="website-live-indicator">LIVE</div>
+                    <video id="live-stream" controls autoplay>
+                        <source src="path/to/live/stream" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <button class="fullscreen-btn" onclick="toggleFullscreen()">Fullscreen</button>
+                </div>
+            </div>
+            <h2>Previous Streams</h2>
+            <div class="previous-streams-grid" id="previous-streams-grid">
+                <!-- Previous streams will be dynamically added here -->
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer">
+        <div class="container">
+            <p>&copy; 2025 Word International Church. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle fullscreen for the live stream
+        function toggleFullscreen() {
+            const video = document.getElementById('live-stream');
+            if (!document.fullscreenElement) {
+                if (video.requestFullscreen) {
+                    video.requestFullscreen();
+                } else if (video.mozRequestFullScreen) { // Firefox
+                    video.mozRequestFullScreen();
+                } else if (video.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                    video.webkitRequestFullscreen();
+                } else if (video.msRequestFullscreen) { // IE/Edge
+                    video.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) { // Firefox
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) { // Chrome, Safari and Opera
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) { // IE/Edge
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        // Function to check if live indicators should be displayed
+        function checkLiveIndicators() {
+            const websiteLiveIndicator = document.getElementById('website-live-indicator');
+
+            // Example logic to check if streams are live (replace with actual logic)
+            const isWebsiteLive = true; // Replace with actual check
+
+            websiteLiveIndicator.style.display = isWebsiteLive ? 'block' : 'none';
+        }
+
+        // Function to save the current stream to the previous streams list
+        function saveCurrentStream() {
+            const previousStreamsGrid = document.getElementById('previous-streams-grid');
+            const currentStreamSrc = document.getElementById('live-stream').querySelector('source').src;
+            const currentDate = new Date().toISOString().split('T')[0];
+
+            const streamCard = document.createElement('div');
+            streamCard.classList.add('stream-card');
+            streamCard.innerHTML = `
+                <h4>Service on ${currentDate}</h4>
+                <video controls>
+                    <source src="${currentStreamSrc}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            `;
+
+            // Add the new stream card to the beginning of the grid
+            previousStreamsGrid.insertBefore(streamCard, previousStreamsGrid.firstChild);
+
+            // Keep only the last 4 streams
+            while (previousStreamsGrid.children.length > 4) {
+                previousStreamsGrid.removeChild(previousStreamsGrid.lastChild);
+            }
+        }
+
+        // Check if live indicators should be displayed on page load
+        document.addEventListener('DOMContentLoaded', checkLiveIndicators);
+
+        // Save the current stream when it ends
+        document.getElementById('live-stream').addEventListener('ended', saveCurrentStream);
+    </script>
+</body>
+
+</html>

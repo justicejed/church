@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Word International Church (WIC)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --dark-bg: #ffffff; /* Changed background to white */
+            --primary-accent: #9e1f3d; /* Color from the logo */
+            --secondary-accent: #c7b299; /* Color from the logo */
+            --text-light: #000000; /* Changed text color to black */
+            --card-bg: #f0f0f0; /* Light card background */
+            --highlight-color: #f0e6d2;
+            --footer-text: #666666;
+            --button-bg: #ffffff; /* White button background */
+            --button-text: #000000; /* Black button text */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: var(--text-light);
+            background-color: var(--dark-bg);
+            font-weight: 400;
+            background-image: url('images/offering.jpg'); /* Add background graphic */
+            background-size: cover;
+            background-attachment: fixed;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        header {
+            background-color: #ffffff; /* Made bar of the logo white background */
+            color: var(--text-light);
+            padding: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: background-color 0.4s ease-in-out;
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 0.8px;
+            color: var(--primary-accent); /* Changed text color to blend with logo */
+            text-shadow: none;
+            animation: fadeIn 1s ease-out;
+            transition: color 0.3s ease-in-out;
+        }
+
+        header h1:hover {
+            color: var(--secondary-accent); /* Changed hover color to blend with logo */
+        }
+
+        .bible-verses {
+            text-align: center;
+            margin: 30px 0;
+            font-size: 1.2rem;
+            color: var(--primary-accent);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .bible-verses p {
+            margin-bottom: 15px;
+            font-style: italic;
+            font-family: 'Georgia', serif;
+            color: var(--secondary-accent);
+        }
+
+        .payment-container {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            max-width: 500px;
+            width: 100%;
+            margin: 50px auto;
+            transition: all 0.3s ease;
+            position: relative;
+            flex: 1;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .payment-container::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: linear-gradient(135deg, rgba(158, 31, 61, 0.2), rgba(199, 178, 153, 0.2));
+            z-index: -1;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .payment-container:hover::before {
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-accent);
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+        }
+
+        .payment-options {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 1rem;
+        }
+
+        .payment-option {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: var(--button-text);
+            background-color: var(--button-bg);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Georgia', serif;
+        }
+
+        .payment-option img {
+            margin-right: 0.5rem;
+            width: 20px;
+            height: 20px;
+        }
+
+        .payment-option:hover {
+            background-color: var(--highlight-color);
+        }
+
+        .payment-option.active {
+            background-color: var(--highlight-color);
+            color: var(--dark-bg);
+        }
+
+        .payment-form {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .payment-form.active {
+            display: block;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Georgia', serif;
+        }
+
+        input[type="number"] {
+            min="0";
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-family: 'Georgia', serif;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--highlight-color);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        footer {
+            background-color: var(--card-bg);
+            color: var(--footer-text);
+            text-align: center;
+            padding: 30px 0;
+            animation: fadeIn 1s ease-out;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            margin-top: auto;
+        }
+
+        .logo {
+            max-height: 60px;
+            margin-left: 0;
+        }
+
+        /* Responsive Design */
+            }
+
+            .payment-container {
+                padding: 1rem;
+            }
+
+            .payment-option {
+                padding: 0.5rem;
+                font-size: 0.9rem;
+            }
+
+            input[type="text"],
+            input[type="number"] {
+                padding: 0.4rem;
+                font-size: 0.9rem;
+            }
+
+            button[type="submit"] {
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <a href="index.html"><img src="images/logo.jpeg" alt="Church Logo" class="logo"></a> <!-- Made logo clickable and adjusted position -->
+            <h1>Word International Church</h1>
+        </div>
+    </header>
+
+    <div class="bible-verses">
+        <p>"Each one must give as he has decided in his heart, not reluctantly or under compulsion, for God loves a cheerful giver." - 2 Corinthians 9:7</p>
+        <p>"Give, and it will be given to you. Good measure, pressed down, shaken together, running over, will be put into your lap. For with the measure you use it will be measured back to you." - Luke 6:38</p>
+        <p>"Honor the Lord with your wealth and with the firstfruits of all your produce." - Proverbs 3:9</p>
+    </div>
+
+    <div class="payment-container">
+        <h1>Payment</h1>
+        <div class="payment-options">
+            <button class="payment-option active" data-option="paypal">
+                <img src="images/paypal.png" alt="PayPal Logo">PayPal
+            </button>
+            <button class="payment-option" data-option="cashapp">
+                <img src="images/cashapp.png" alt="Cash App Logo">Cash App
+            </button>
+            <button class="payment-option" data-option="card">
+                <img src="images/card.png" alt="Card Logo">Card
+            </button>
+        </div>
+        <div id="paypal-form" class="payment-form active">
+            <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="_xclick">
+                <input type="hidden" name="business" value="wordinternational@icloud.com">
+                <input type="text" name="item_name" placeholder="Item Name" required>
+                <input type="number" name="amount" placeholder="Amount" step="1" min="0" required>
+                <button type="submit"><img src="images/paypal.png" alt="PayPal Logo" style="width: 20px; height: 20px; margin-right: 5px;">Pay with PayPal</button>
+            </form>
+        </div>
+        <div id="cashapp-form" class="payment-form">
+            <form action="https://cash.app/" method="get">
+                <input type="hidden" name="$" value="$wordint">
+                <input type="text" name="note" placeholder="Payment Note" required>
+                <input type="number" name="amount" placeholder="Amount" step="1" min="0" required>
+                <button type="submit"><img src="images/cashapp.png" alt="Cash App Logo" style="width: 20px; height: 20px; margin-right: 5px;">Pay with Cash App</button>
+            </form>
+        </div>
+        <div id="card-form" class="payment-form">
+            <form id="card-payment-form">
+                <input type="text" placeholder="Card Number" required>
+                <input type="text" placeholder="Expiry Date (MM/YY)" required>
+                <input type="text" placeholder="CVV" required>
+                <input type="number" placeholder="Amount" step="1" min="0" required>
+                <button type="submit">Pay with Card</button>
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Word International Church. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const paymentOptions = document.querySelectorAll('.payment-option');
+        const paymentForms = document.querySelectorAll('.payment-form');
+
+        paymentOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                const selectedOption = option.dataset.option;
+                paymentOptions.forEach(opt => opt.classList.remove('active'));
+                paymentForms.forEach(form => form.classList.remove('active'));
+                option.classList.add('active');
+                document.getElementById(`${selectedOption}-form`).classList.add('active');
+            });
+        });
+
+        document.getElementById('card-payment-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Card payment processing is not implemented in this example.');
+        });
+    </script>
+</body>
+
+</html>
